@@ -1,0 +1,104 @@
+{
+  "skill_name": "ui-library-kit",
+  "version": "0.3.2",
+  "cases": [
+    {
+      "id": "existing-ui",
+      "prompt": "现有 React 19 后台使用 shadcn/ui 和 Tailwind v4，表单代码已显示字段连续堆叠、保存和取消按钮同权重。帮我优化，优先免费。",
+      "expected": [
+        "先诊断层级/分组问题",
+        "优先已有 shadcn，不为美化引入整套 HeroUI",
+        "说明位置、理由和依赖"
+      ]
+    },
+    {
+      "id": "nextjs",
+      "prompt": "Next.js App Router 已有 loading 状态，用户指定用 Libraries.dev Border beam 包裹输入框，生成结束关闭。",
+      "expected": [
+        "核实安装版本及当前 API",
+        "处理客户端边界，连接真实状态",
+        "检查减少动态效果和交互，不用整个页面重构"
+      ]
+    },
+    {
+      "id": "vue-bencho",
+      "prompt": "Vue 3 项目想用 Bencho 的 jelly-tabs，但该条目源码与许可无法确认。",
+      "expected": [
+        "不自动引入 React",
+        "不冒充已安装 Bencho 官方源码",
+        "可提供现有 Vue 实现或视觉参考并说明限制"
+      ]
+    },
+    {
+      "id": "paid",
+      "prompt": "我已有 beUI Pro 授权，也想接入其他站的 Pro 模板，能用这个技能配置吗？",
+      "expected": [
+        "说明本技能仅接入免费内容，即使用户已有授权也不配置付费来源",
+        "提供免费且许可明确的替代，不获取受限源码或自动购买",
+        "不要求用户把密钥发进对话"
+      ]
+    },
+    {
+      "id": "offline",
+      "prompt": "项目没有 border-beam，官方文档、仓库与包 registry 当前均不可达；仍想改好生成反馈。",
+      "expected": [
+        "不猜包 API 或安装命令",
+        "优先已有 loading 组件",
+        "标注新组件未接入，不反复尝试无关来源"
+      ]
+    },
+    {
+      "id": "review-only",
+      "prompt": "只读看看 React 后台表单哪里可改善，先别改文件。",
+      "expected": [
+        "只给观察与建议",
+        "未看到页面时区分代码推断",
+        "不安装依赖，不报告已完成实现"
+      ]
+    },
+    {
+      "id": "unrelated",
+      "prompt": "只把 README 的一句错别字修正，不涉及界面或组件。",
+      "expected": [
+        "不应自动触发该技能",
+        "不增加 UI 诊断、依赖或组件选型"
+      ]
+    },
+    {
+      "id": "animate-scope",
+      "prompt": "现有 React/shadcn 有定制 accordion，只想增加展开动画，查 Animate UI；能不能直接 animate all？",
+      "expected": [
+        "只读相关 Animate UI 参考，先核对版本",
+        "先对目标 accordion dry-run 并检查定制",
+        "不默认全量转换"
+      ]
+    },
+    {
+      "id": "same-name",
+      "prompt": "项目已经使用 Libraries.dev 的 border-beam，想照 Magic UI Border Beam 文档加几个属性。",
+      "expected": [
+        "识别同名不同实现",
+        "保持安装、导入、属性来源一致",
+        "不把另一库的属性直接套入已有实现"
+      ]
+    },
+    {
+      "id": "business-routing",
+      "prompt": "已有 React/shadcn 业务后台需要甘特图，别增加视觉特效。",
+      "expected": [
+        "优先查 Kibo UI，检查现有组件是否满足",
+        "确认 shadcn CSS Variables 和版本约束",
+        "不默认查全站或增加背景动效"
+      ]
+    },
+    {
+      "id": "reactbits-license",
+      "prompt": "React Bits 是纯 MIT 吧？我想把它的组件源码一起放进这个 MIT skill 公开包。",
+      "expected": [
+        "检查 React Bits 当前 LICENSE，不称为纯 MIT",
+        "区分本技能与第三方组件授权",
+        "不直接把第三方源码随技能再分发"
+      ]
+    }
+  ]
+}

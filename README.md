@@ -1,0 +1,78 @@
+# UI Library Kit
+
+为现有前端页面诊断视觉和交互问题，再从 10 个 UI 来源中选择、接入与验证合适组件。适合希望保留现有技术栈和主题的开发者。
+
+这是独立的 Agent Skill，不是组件合集，也不是这些来源的官方产品。无需预先配置 MCP；不捆绑第三方组件源码，不保证这些来源所有组件都能直接安装。
+
+当前版本：**0.3.2**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
+
+## 快速开始
+
+把完整的 `ui-library-kit` 文件夹放进你的客户端技能目录：
+
+| 客户端 | 用户级目录 | 显式调用 |
+| --- | --- | --- |
+| Codex | `~/.codex/skills/ui-library-kit/` | `$ui-library-kit` |
+| Claude Code | `~/.claude/skills/ui-library-kit/` | `/ui-library-kit` |
+
+新开会话后说：
+
+> 用 ui-library-kit 优化当前页面，先诊断问题，只用免费组件，沿用现有技术栈和配色。
+
+也可以只要建议：
+
+> 用 ui-library-kit 只读检查这个表单，说明最值得调整的位置，不修改文件。
+
+或指定具体效果：
+
+> 用 ui-library-kit 给 AI 输入框增加生成反馈，先复用现有组件，需要新依赖时说明理由。
+
+从 GitHub 安装：
+
+```sh
+npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
+```
+
+完整安装、更新、移除和排错见 [安装说明](references/installation.md)。CLI 安装需要其支持的 Node.js；手动复制不需要。读取最新文档需要网络，构建/视觉检查使用项目已有工具。
+
+## 它怎样工作
+
+1. 检查项目与页面，找信息层级、密度、分组和反馈问题。
+2. 优先调整排版与现有组件；需要时查阅相关来源的当前官方文档。
+3. 说明使用位置、理由、来源和依赖，再完成用户授权的接入。
+4. 检查实际构建、布局与交互；有条件时在同一视口和状态比较前后页面。
+
+适用于现有项目的组件选型与局部界面优化。新产品完整视觉设计、后端实现、框架迁移不是本技能的核心职责。非 React 项目先核实兼容实现，不自动引入 React。
+
+仅使用各站免费且许可明确的内容，不接入付费模板或 Pro 授权。Bencho 在源码和许可未确认前仅作灵感参考。
+
+## 来源与证据范围
+
+| 来源 | 适用方向 | 当前状态 |
+| --- | --- | --- |
+| [BoardUI](https://www.boardui.com/) | 后台、图表、Agent 界面 | 官方入口已核实，组件接入未实测 |
+| [Bencho](https://bencho.dev/) | 微交互灵感 | 源码/许可未确认前仅作参考 |
+| [HeroUI](https://heroui.com/) | 表单等基础组件 | 官方入口已核实，组件接入未实测 |
+| [Libraries.dev](https://libraries.dev/) | AI 状态和视觉效果 | 仅 border-beam@1.4.1 完成示例接入验证 |
+| [Watermelon UI](https://ui.watermelon.sh/) | 区块、仪表盘、模板 | 官方入口已核实，组件接入未实测 |
+| [React Bits](https://www.reactbits.dev/) | 文本动画、创意背景 | CountUp 示例接入通过；MIT + Commons Clause / Pro 分开 |
+| [Animate UI](https://animate-ui.com/docs/installation) | React/Vue 组件动画 | 文档已核实，未实测；MIT + Commons Clause；先 dry-run |
+| [Kibo UI](https://www.kibo-ui.com/docs/setup) | 复杂业务组件 | 文档已核实，未实测；依赖 shadcn 与变量主题 |
+| [Magic UI](https://magicui.design/docs/installation) | 展示区块与动效 | Number Ticker 示例接入通过；免费与 Pro 分开 |
+| [Aceternity UI](https://ui.aceternity.com/docs/cli) | 营销区块与视差卡片 | Bento Grid 示例接入通过；按条目核实授权 |
+
+状态日期：2026-11-05，具体证据及维护规则见 [支持说明](references/support.md)。Codex 和 Claude Code 在本机验证过发现/调用；其他客户端及系统没有全面验证。
+
+当前免费范围调整与验收见 [0.3.2 验收报告](evals/release-0.3.2.md)；此前实际组件接入与浏览器证据见 [0.3.1 验收报告](evals/release-0.3.1.md)。
+
+## 示例与验收
+
+[选型示例](references/examples.md)展示建议如何表达，不能当作实际产品前后效果证明。
+
+[评测案例](evals/cases.json)覆盖组件复用、Next.js 接入、Vue、付费内容范围、无网络、只读请求、无关任务，以及新增来源的转换范围、同名组件与许可边界。[评测方法](evals/README.md)说明如何对比旧版本、保存证据及判断结果。评测结论见 [0.2.0 记录](evals/results.md) 与 [0.3.0 记录](evals/results-0.3.0.md)。行为评测与真实 UI 验收分开记录，不声称能自动保证美观。
+
+## 许可与贡献
+
+本技能原创指令和文档采用 [MIT](LICENSE)，作者为 shengshuyuan。这些来源的商标、代码、模板及素材属于各自权利人，使用时另行核实其许可；本技能不接入第三方付费内容。React Bits、Animate UI 的 Commons Clause 等额外条件仍需遵守，不能把“免费”当作“无限制”。
+
+反馈时提供客户端、技能版本、框架/组件库版本、复现提示词与预期行为。请使用脱敏样例，不提交密钥、账号信息、私有业务源码或未授权截图。改动需保持主文件简短，来源细节放 references；不要无目的扩大组件库数量。

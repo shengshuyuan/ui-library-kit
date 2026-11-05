@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Library Kit"
+  short_description: "先诊断页面问题，再从精选 UI 来源选择兼容的免费组件，沿用现有主题接入并验证"
+  default_prompt: "用 $ui-library-kit 优化当前页面，先诊断视觉与交互问题，优先复用现有组件和许可明确的免费方案。"
