@@ -1,10 +1,11 @@
 # Changes
 
-## 0.3.2 — 2026-11-05 (local, not published)
+## 0.3.2 — 2026-11-05
 
 - 移除纯付费 beUI Pro 来源及接入说明，其余 10 个来源仅使用免费且许可明确的内容。
 - 明确混合网站不接入 Pro/All-Access，Bencho 未确认许可前仅作参考。
 - 更新付费场景的行为要求与安装包；历史验收报告保留原范围。
+- 发布公开 GitHub 仓库，验证远程 Skills CLI 安装及文件一致性。
 
 ## 0.3.1 — 2026-11-05 (local, not published)
 
