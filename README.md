@@ -1,10 +1,12 @@
 # UI Library Kit
 
+> An Agent Skill that diagnoses visual/interaction issues on an existing frontend page first, then picks, integrates and verifies free, clearly-licensed components from 10 curated UI sources — without replacing your stack or theme. Works with Codex, Claude Code and Cursor. Chinese docs below.
+
 为现有前端页面诊断视觉和交互问题，再从 10 个 UI 来源中选择、接入与验证合适组件。适合希望保留现有技术栈和主题的开发者。
 
 这是独立的 Agent Skill，不是组件合集，也不是这些来源的官方产品。无需预先配置 MCP；不捆绑第三方组件源码，不保证这些来源所有组件都能直接安装。
 
-当前版本：**0.3.2**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
+当前版本：**0.4.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
 
 ## 快速开始
 
@@ -14,6 +16,7 @@
 | --- | --- | --- |
 | Codex | `~/.codex/skills/ui-library-kit/` | `$ui-library-kit` |
 | Claude Code | `~/.claude/skills/ui-library-kit/` | `/ui-library-kit` |
+| Cursor | `~/.cursor/skills/ui-library-kit/` | 在对话中附加或点名该技能 |
 
 新开会话后说：
 
@@ -37,10 +40,11 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 
 ## 它怎样工作
 
-1. 检查项目与页面，找信息层级、密度、分组和反馈问题。
-2. 优先调整排版与现有组件；需要时查阅相关来源的当前官方文档。
-3. 说明使用位置、理由、来源和依赖，再完成用户授权的接入。
-4. 检查实际构建、布局与交互；有条件时在同一视口和状态比较前后页面。
+1. **诊断**：检查项目约束与页面，找信息层级、密度、分组和反馈问题。
+2. **决策门**：排版能解决就不加组件；已有组件能满足就不加依赖；都不行才选型。
+3. **选型**：按路由表定位一两个来源，核实当前官方文档、版本与许可。
+4. **接入**：先说明位置、理由、来源和依赖，再用最小依赖接入，复用现有主题与真实业务状态。
+5. **验证**：构建、桌面/窄屏渲染、键盘与 reduced-motion、深浅色；有条件时在同一视口和状态比较前后页面。
 
 适用于现有项目的组件选型与局部界面优化。新产品完整视觉设计、后端实现、框架迁移不是本技能的核心职责。非 React 项目先核实兼容实现，不自动引入 React。
 
@@ -61,18 +65,18 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 | [Magic UI](https://magicui.design/docs/installation) | 展示区块与动效 | Number Ticker 示例接入通过；免费与 Pro 分开 |
 | [Aceternity UI](https://ui.aceternity.com/docs/cli) | 营销区块与视差卡片 | Bento Grid 示例接入通过；按条目核实授权 |
 
-状态日期：2026-11-05，具体证据及维护规则见 [支持说明](references/support.md)。Codex 和 Claude Code 在本机验证过发现/调用；其他客户端及系统没有全面验证。
+内容核实日期：2026-11-05；入口 URL 于 2026-11-07 复检可达。具体证据及维护规则见 [支持说明](references/support.md)。Codex、Claude Code、Cursor 在本机验证过发现/调用；其他客户端及系统没有全面验证。
 
-当前免费范围调整与验收见 [0.3.2 验收报告](evals/release-0.3.2.md)；此前实际组件接入与浏览器证据见 [0.3.1 验收报告](evals/release-0.3.1.md)。
+本版结构重构与验收见 [0.4.0 验收报告](evals/release-0.4.0.md)；免费范围调整见 [0.3.2 验收报告](evals/release-0.3.2.md)；实际组件接入与浏览器证据见 [0.3.1 验收报告](evals/release-0.3.1.md)。
 
 ## 示例与验收
 
 [选型示例](references/examples.md)展示建议如何表达，不能当作实际产品前后效果证明。
 
-[评测案例](evals/cases.json)覆盖组件复用、Next.js 接入、Vue、付费内容范围、无网络、只读请求、无关任务，以及新增来源的转换范围、同名组件与许可边界。[评测方法](evals/README.md)说明如何对比旧版本、保存证据及判断结果。评测结论见 [0.2.0 记录](evals/results.md) 与 [0.3.0 记录](evals/results-0.3.0.md)。行为评测与真实 UI 验收分开记录，不声称能自动保证美观。
+[评测案例](evals/cases.json)覆盖组件复用、Next.js 接入、Vue、付费内容范围、无网络、只读请求、无关任务、新增来源的转换范围、同名组件、许可边界，以及 0.4.0 新增的英文触发、包管理器换算和深浅色回归。[评测方法](evals/README.md)说明如何对比旧版本、保存证据及判断结果。评测结论见 [0.2.0 记录](evals/results.md) 与 [0.3.0 记录](evals/results-0.3.0.md)。行为评测与真实 UI 验收分开记录，不声称能自动保证美观。
 
 ## 许可与贡献
 
-本技能原创指令和文档采用 [MIT](LICENSE)，作者为 shengshuyuan。这些来源的商标、代码、模板及素材属于各自权利人，使用时另行核实其许可；本技能不接入第三方付费内容。React Bits、Animate UI 的 Commons Clause 等额外条件仍需遵守，不能把“免费”当作“无限制”。
+本技能原创指令和文档采用 [MIT](LICENSE)，作者为 shengshuyuan。这些来源的商标、代码、模板及素材属于各自权利人，使用时另行核实其许可；本技能不接入第三方付费内容。React Bits、Animate UI 的 Commons Clause 等额外条件仍需遵守，不能把"免费"当作"无限制"。
 
 反馈时提供客户端、技能版本、框架/组件库版本、复现提示词与预期行为。请使用脱敏样例，不提交密钥、账号信息、私有业务源码或未授权截图。改动需保持主文件简短，来源细节放 references；不要无目的扩大组件库数量。

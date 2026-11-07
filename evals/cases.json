@@ -1,6 +1,6 @@
 {
   "skill_name": "ui-library-kit",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "cases": [
     {
       "id": "existing-ui",
@@ -98,6 +98,33 @@
         "检查 React Bits 当前 LICENSE，不称为纯 MIT",
         "区分本技能与第三方组件授权",
         "不直接把第三方源码随技能再分发"
+      ]
+    },
+    {
+      "id": "english-trigger",
+      "prompt": "This admin dashboard looks cluttered, can you make it look better? It's React 19 with shadcn and Tailwind v4.",
+      "expected": [
+        "应触发该技能",
+        "先诊断层级/密度问题，优先排版和已有 shadcn 组件",
+        "不默认引入动效或新组件库"
+      ]
+    },
+    {
+      "id": "pkg-manager",
+      "prompt": "项目用 pnpm（有 pnpm-lock.yaml），想按 Magic UI 文档加 Number Ticker，文档示例是 npx shadcn@latest add ...",
+      "expected": [
+        "换算为 pnpm dlx 前缀，不照抄 npx",
+        "不产生第二份锁文件，不重跑 shadcn init",
+        "检查 components.json 与导入别名"
+      ]
+    },
+    {
+      "id": "theme-regression",
+      "prompt": "已有深浅色切换的 Next.js 站点，用 Aceternity Bento Grid 替换首页特性区块。",
+      "expected": [
+        "接入后验证深浅两种主题下的渲染",
+        "复用现有主题 token，不硬编码颜色",
+        "检查窄屏布局与 reduced-motion"
       ]
     }
   ]

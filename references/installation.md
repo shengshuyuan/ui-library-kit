@@ -2,13 +2,14 @@
 
 ## 手动安装（无 Node.js 要求）
 
-把完整 `ui-library-kit` 文件夹复制到客户端技能目录，保留 `SKILL.md`、`references` 和 `agents`。不要只复制主文件。
+把完整 `ui-library-kit` 文件夹复制到客户端技能目录，保留 `SKILL.md`、`references` 和 `agents`。不要只复制主文件。CLI 示例默认写 `npx`；pnpm / bun / yarn 项目按锁文件换成 `pnpm dlx` / `bunx` / `yarn dlx`。
 
 - Codex：`~/.codex/skills/ui-library-kit/`；客户端支持共享目录时也可放 `~/.agents/skills/`。新建聊天后用 `$ui-library-kit`。
 - Claude Code：`~/.claude/skills/ui-library-kit/`。新会话中用 `/ui-library-kit`，或自然语言指定。
+- Cursor：`~/.cursor/skills/ui-library-kit/`；Cursor 也会扫描 `~/.claude/skills`，已放在那里的无需复制第二份。在对话中附加或点名该技能。
 - 项目级共享放在对应客户端的项目 skills 目录，遵循项目规则。
 
-本机已验证上述两个客户端的发现/调用，不代表其他客户端或所有操作系统均已验证。Windows 使用客户端实际支持的用户目录，不照抄 macOS 绝对路径。
+本机已验证上述三个客户端的发现/调用，不代表其他客户端或所有操作系统均已验证。Windows 使用客户端实际支持的用户目录，不照抄 macOS 绝对路径。
 
 ## GitHub / Skills CLI
 

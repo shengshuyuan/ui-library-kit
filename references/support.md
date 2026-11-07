@@ -1,6 +1,6 @@
 # 支持程度与维护
 
-状态记录日期：2026-11-05。入口核实不是端到端安装证明；下列状态针对本技能的证据，不是对上游质量评分。
+状态记录日期：2026-11-05；2026-11-07 复检 10 个来源的主要入口 URL 均返回 HTTP 200（仅确认可达，未逐页重读内容）。入口核实不是端到端安装证明；下列状态针对本技能的证据，不是对上游质量评分。
 
 | 来源 | 本技能验证程度 | 接入条件 |
 | --- | --- | --- |
@@ -15,7 +15,7 @@
 | Magic UI | Number Ticker 完成 CLI 安装、类型检查、构建、状态更新与浏览器验证 | 免费与 Pro 分开，不混用同名 Border Beam API |
 | Aceternity UI | Bento Grid 完成 CLI 安装、类型检查、构建与响应式/主题验证 | 免费与 All-Access 分开，避免误跑新项目初始化 |
 
-Codex、Claude Code 已在本机新进程验证发现/调用。公开 GitHub 仓库已通过 Skills CLI 在临时项目安装到 Codex 与 Claude Code 目录，并逐文件比对。其他客户端、Windows/Linux 尚未验证。公开文档不能把这些写成全面兼容。
+Codex、Claude Code 已在本机新进程验证发现/调用；Cursor 会话中已验证可从 `~/.claude/skills` 发现并附加该技能。公开 GitHub 仓库已通过 Skills CLI 在临时项目安装到 Codex 与 Claude Code 目录，并逐文件比对。其他客户端、Windows/Linux 尚未验证。公开文档不能把这些写成全面兼容。
 
 当前只使用上述来源的免费且许可明确内容；Pro/All-Access 内容不在接入范围。纯付费 beUI Pro 已从当前来源移除，历史报告保留原验证范围。
 

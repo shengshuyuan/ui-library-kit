@@ -23,3 +23,15 @@
 ## 官网不可达
 
 “目标组件当前 API 无法核实；先查看项目已安装版本的类型和源码。若没有该依赖且无版本文档证据，使用现有组件完成需求，并标注新来源接入未完成。”
+
+## 实施报告
+
+```
+改动：src/components/Stats.tsx 用 Number Ticker 替换静态数字；新增 src/components/ui/number-ticker.tsx
+来源：Magic UI Number Ticker（官网组件文档页），通过 shadcn registry 安装，记录实际拉取日期
+新增依赖：motion（项目原有，无新增）
+已验证：pnpm build 通过；桌面/375px 渲染正常；reduced-motion 下显示静态数值（应用层处理）
+未验证：深色主题截图未对比；Safari 未测
+```
+
+四行中每一行都对应真实动作；没做的写进"未验证"，不写进"已验证"。
