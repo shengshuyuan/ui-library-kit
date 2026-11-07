@@ -22,8 +22,10 @@
 - 本机三份副本（`~/.claude/skills`、`~/.agents/skills`、GitHub main）逐文件一致。
 - 远程 Skills CLI 在临时项目安装成功，安装文件与发布提交一致。
 
+- 行为评测：新增三个案例（english-trigger、pkg-manager、theme-regression）与两个回归案例（paid、same-name）由独立子代理运行，五项全部通过，详见 [results-0.4.0.md](results-0.4.0.md)。
+
 ## 未验证
 
-- 未重新运行模型行为评测；新增三个案例只写入 cases.json，尚无对照结果。
+- 其余 9 个既有案例未在 0.4.0 上重跑；评测者与作者同模型家族，不作量化结论。
 - 未重新接入组件或做浏览器测试；真实接入证据仍见 [0.3.1 报告](release-0.3.1.md)，不因本版扩大。
 - Windows / Linux 与 Codex、Claude Code、Cursor 以外的客户端未验证。

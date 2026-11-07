@@ -73,7 +73,7 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 
 [选型示例](references/examples.md)展示建议如何表达，不能当作实际产品前后效果证明。
 
-[评测案例](evals/cases.json)覆盖组件复用、Next.js 接入、Vue、付费内容范围、无网络、只读请求、无关任务、新增来源的转换范围、同名组件、许可边界，以及 0.4.0 新增的英文触发、包管理器换算和深浅色回归。[评测方法](evals/README.md)说明如何对比旧版本、保存证据及判断结果。评测结论见 [0.2.0 记录](evals/results.md) 与 [0.3.0 记录](evals/results-0.3.0.md)。行为评测与真实 UI 验收分开记录，不声称能自动保证美观。
+[评测案例](evals/cases.json)覆盖组件复用、Next.js 接入、Vue、付费内容范围、无网络、只读请求、无关任务、新增来源的转换范围、同名组件、许可边界，以及 0.4.0 新增的英文触发、包管理器换算和深浅色回归。[评测方法](evals/README.md)说明如何对比旧版本、保存证据及判断结果。评测结论见 [0.2.0 记录](evals/results.md)、[0.3.0 记录](evals/results-0.3.0.md) 与 [0.4.0 记录](evals/results-0.4.0.md)（新增三案例 + 两回归案例通过）。行为评测与真实 UI 验收分开记录，不声称能自动保证美观。
 
 ## 许可与贡献
 
