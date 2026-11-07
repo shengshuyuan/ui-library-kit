@@ -1,10 +1,10 @@
 ---
 name: ui-library-kit
-description: 为现有前端页面诊断视觉与交互问题，并从 BoardUI、Bencho、HeroUI、Libraries.dev、Watermelon UI、React Bits、Animate UI、Kibo UI、Magic UI、Aceternity UI 等来源选型、接入与验证免费组件。当用户要求页面"更好看"、优化后台/表单/仪表盘布局、增加动效或 AI 生成反馈、搜索或比较 UI 组件库时使用；也响应英文请求（make it look better、add animation、pick a UI component、polish this page）。纯文案、后端逻辑或与界面无关的修改不需要调用。
+description: 为现有前端页面诊断视觉与交互问题，并从 BoardUI、Bencho、HeroUI、Libraries.dev、Watermelon UI、React Bits、Animate UI、Kibo UI、Magic UI、Aceternity UI 等来源选型、接入与验证免费组件。当用户要求页面"更好看"、整站或单页界面审查、优化后台/表单/仪表盘布局、增加动效或 AI 生成反馈、搜索或比较 UI 组件库时使用；也响应英文请求（make it look better、add animation、pick a UI component、polish this page）。纯文案、后端逻辑或与界面无关的修改不需要调用。
 license: MIT
 metadata:
   author: shengshuyuan
-  version: "0.4.0"
+  version: "0.4.1"
 ---
 
 # UI Library Kit
@@ -33,6 +33,7 @@ metadata:
 - 找问题：信息层级、内容密度、分组留白、对齐、状态反馈（loading/error/empty/disabled）。
 - 定主次：主操作、次操作、阅读顺序、现有视觉风格。
 - 没看到页面时先读代码，并区分"代码推断"与"实际观察"；只在缺失偏好会实质改变结果时提问。
+- 整站审查：先列出全部路由与关键状态（登录/后台、空列表、表单出错、弹窗打开、加载中），每项在桌面和窄屏截图或测量，不只看首页。标记里用到的 class 在样式中不存在，常是整页未套样式的信号。
 
 ### 2. 决策门
 
@@ -43,6 +44,8 @@ metadata:
 3. 需要新组件？→ 进入选型。说明为什么现有方案不够。
 
 不要把"美化"默认理解为增加动画、渐变或整套 UI 库。不为了使用本技能新建项目、迁移框架或重写全站 token。
+
+项目没有组件库（手写 CSS、只用 Tailwind 或图标库）时，默认结论是"不新增组件库"；只有原生实现成本明显过高的单个复杂控件（日期、拖拽排序、甘特图等）才进入选型，并只引入该条目。
 
 ### 3. 选型路由
 
@@ -93,7 +96,7 @@ metadata:
 ### 5. 验证
 
 ```
-- [ ] 构建 / 类型检查 / 已有测试（与改动规模相称）
+- [ ] 构建 / 类型检查 / lint / 已有测试含端到端（与改动规模相称）
 - [ ] 桌面与窄屏实际渲染
 - [ ] 关键交互、键盘焦点、触屏
 - [ ] reduced-motion 下的降级表现
@@ -103,6 +106,11 @@ metadata:
 
 无法打开浏览器时明确"未做视觉验收"。截图对比检查主次层级、对齐、拥挤和动效干扰，有实质问题再做针对性调整。不伪造前后对照，不把主观美观写成自动测试通过。
 
+- 自动化浏览器检查先等页面水合、等结果出现再断言；一次失败先排除时机问题，再判定为缺陷。
+- 遮挡、透明度、溢出以计算样式、命中测试、元素尺寸和控制台报错为准，截图描述只作辅助。
+- 已有测试失败时定位卡住的步骤，区分"产品回归"与"测试脚本过时"，修正对应一方并说明；不跳过、不删除测试。
+- 结束后删除临时检查脚本和测试数据。
+
 ## 常见坑
 
 - 同名不同实现：Libraries.dev `border-beam` 与 Magic UI Border Beam 不是一回事，不混用属性。
@@ -111,6 +119,8 @@ metadata:
 - 把 React Bits / Animate UI 说成"纯 MIT"：实际为 MIT + Commons Clause。
 - 不看版本就复制文档示例：HeroUI v2/v3、Animate UI v1/v2 的 API 与依赖不同。
 - 照抄 `npx` 命令到 pnpm/bun 项目，产生第二份锁文件。
+- 整站审查只看首页：后台登录、空状态、出错提示这类页面最容易整页缺样式。
+- 页面刚打开就自动点击，把水合前的点击当成功能缺陷。
 
 ## 交付格式
 
