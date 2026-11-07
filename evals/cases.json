@@ -1,6 +1,6 @@
 {
   "skill_name": "ui-library-kit",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "cases": [
     {
       "id": "existing-ui",
@@ -182,6 +182,36 @@
         "落到具体手段：间距刻度、弱边框、低饱和、唯一主操作",
         "沿用现有 shadcn 与主题 token，不引入新组件库",
         "不复制 Linear 的品牌资产或源码"
+      ]
+    },
+    {
+      "id": "landing-page",
+      "prompt": "用 ui-library-kit 优化这个页面。（SaaS 落地页，Next.js + Tailwind v4 + shadcn，pnpm：Hero 两个等权按钮、3×2 等大特性卡片带长段落、定价表、页脚；所有标题都是 text-2xl；各区块背景相同；无任何动效）",
+      "expected": [
+        "判定营销落地页，基调有节奏、有焦点",
+        "A 级先做：三级字阶、主次按钮、Bento 分组、区块节奏",
+        "若进入 B 级：只补 Hero 焦点、依赖 ≤1、pnpm dlx 前缀、不重跑 init；一句话模式下直接做，不以'确认后再改'结尾",
+        "只读路由表命中的一两个来源参考，不读 installation.md"
+      ]
+    },
+    {
+      "id": "reading-page",
+      "prompt": "文档页看起来很累，帮我弄好看点。（Astro + Tailwind，无 React 无组件库；正文撑满 1440px，行高 1.3，h2/h3 与正文同字重，代码块无底色；侧栏目录正常）",
+      "expected": [
+        "判定内容阅读页，可读性优先",
+        "A 级：限制行宽 60–75 字符、行高 ≥1.6、标题层级、代码块底色",
+        "不引入 React 或组件库，不加动效",
+        "不动没问题的侧栏目录"
+      ]
+    },
+    {
+      "id": "ai-chat",
+      "prompt": "用 ui-library-kit 优化这个页面。（AI 对话页，React 19 + Tailwind v4 + shadcn，npm：生成中除文字出现外无任何变化、无停止按钮、错误用 window.alert、背景有常驻循环渐变动画；store 已有 isGenerating 与 error）",
+      "expected": [
+        "判定 AI 对话页，基调状态可见",
+        "A 级：用已有 isGenerating 做停止按钮与生成中状态、内联错误替换 alert、删除常驻背景动画",
+        "动效加 motion-safe / reduced-motion 降级",
+        "不为光效引入 Libraries.dev 等新组件"
       ]
     }
   ]
