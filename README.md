@@ -1,18 +1,37 @@
 # UI Library Kit
 
-> An Agent Skill that diagnoses visual/interaction issues on an existing frontend page first, then picks, integrates and verifies free, clearly-licensed components from 10 curated UI sources — without replacing your stack or theme. Works with Codex, Claude Code and Cursor. Chinese docs below.
+> An Agent Skill that diagnoses visual/interaction issues on an existing frontend page first, then picks, integrates and verifies free, clearly-licensed components from 10 curated UI sources — with a choice of light polish, targeted upgrades or a full visual redesign on your existing stack. Works with Codex, Claude Code and Cursor. Chinese docs below.
 
-为现有前端页面诊断视觉和交互问题，再从 10 个 UI 来源中选择、接入与验证合适组件。适合希望保留现有技术栈和主题的开发者。
+为现有前端页面诊断视觉和交互问题，再从 10 个 UI 来源中选择、接入与验证合适组件。支持保留现有效果精修、局部升级和整体视觉改版，沿用现有技术栈。
 
 这是独立的 Agent Skill，不是组件合集，也不是这些来源的官方产品。无需预先配置 MCP；不捆绑第三方组件源码，不保证这些来源所有组件都能直接安装。
 
-当前版本：**0.5.1**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
+当前版本：**0.6.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
 
 最简单的用法是一句话：
 
 > 用 ui-library-kit 优化这个页面。
 
-技能会自己判断页面类型（后台 / 落地页 / 表单 / 阅读 / AI 对话）和适合的风格基调，读出项目当前风格，然后决定走哪一级：**A 调排版**（不加依赖，直接做）、**B 在现有框架内补 1–2 个免费组件**（小依赖直接做，大依赖先问）、**C 现有框架撑不住**（只给迁移方向和路径，不自动迁移，但仍先把 A 级能改的改掉）。报告里会写明"风格判断"和"方案等级"，让你知道它为什么这样做。
+先选择改动幅度，技能再独立判断实现成本：
+
+| 优化幅度 | 适用诉求 |
+| --- | --- |
+| 轻量优化 | 保留现有效果，精修字阶、留白、对齐和状态细节 |
+| 局部升级 | 保持全局风格，升级指定区块与交互 |
+| 整体改版 | 保留业务和技术栈，重新组织目标页面的布局与视觉语言 |
+
+已指定幅度时直接沿用；没有指定时给出三个选项。优先复用项目组件、已安装库和兼容的免费区块，再补写缺口。A/B/C 表示实现成本，不表示视觉变化大小：整体改版也可以只用已有组件和 CSS 完成 A 级实现，框架迁移仍是独立决策。
+
+新增 [设计方法参考](references/design-methods.md)，把信息层级、空间节奏和视觉一致性落到组件与验收；结合 Vibe Design Tips 已读取的加载状态、界面连续性、中英文排版文章提炼细节方法。装饰特效按需采用，不默认堆叠动效。
+
+例如：
+
+> 用 ui-library-kit 保留现有效果精修这个页面。
+>
+> 用 ui-library-kit 升级表单区块，尽可能复用现有组件。
+>
+> 用 ui-library-kit 整体改版这个落地页，保留业务功能和技术栈。
+
 
 ## 快速开始
 
@@ -47,12 +66,12 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 ## 它怎样工作
 
 1. **诊断**：检查项目约束与页面，找信息层级、密度、分组和反馈问题。
-2. **风格判断与分级**：识别页面类型定基调，读出当前风格与不一致处；按 A 排版调优 → B 框架内升级 → C 换方向建议的顺序选等级，停在第一个成立的。
-3. **选型**：按路由表定位一两个来源，核实当前官方文档、版本与许可。
+2. **选择幅度与设计方向**：轻量优化、局部升级或整体改版；再独立判断 A 现有能力实现、B 框架内升级、C 迁移建议。
+3. **复用与选型**：先查项目已有实现和已安装库，需要外部组件时才查一两个来源，核实文档、版本与许可。
 4. **接入**：先说明位置、理由、来源和依赖，再用最小依赖接入，复用现有主题与真实业务状态。
 5. **验证**：构建、桌面/窄屏渲染、键盘与 reduced-motion、深浅色；有条件时在同一视口和状态比较前后页面。
 
-适用于现有项目的组件选型与局部界面优化。新产品完整视觉设计、后端实现、框架迁移不是本技能的核心职责。非 React 项目先核实兼容实现，不自动引入 React。
+适用于现有项目的视觉优化、整体页面改版和组件接入。后端实现与框架迁移不是本技能的核心职责。非 React 项目先核实兼容实现，不自动引入 React。
 
 仅使用各站免费且许可明确的内容，不接入付费模板或 Pro 授权。Bencho 在源码和许可未确认前仅作灵感参考。
 
@@ -86,3 +105,5 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 本技能原创指令和文档采用 [MIT](LICENSE)，作者为 shengshuyuan。这些来源的商标、代码、模板及素材属于各自权利人，使用时另行核实其许可；本技能不接入第三方付费内容。React Bits、Animate UI 的 Commons Clause 等额外条件仍需遵守，不能把"免费"当作"无限制"。
 
 反馈时提供客户端、技能版本、框架/组件库版本、复现提示词与预期行为。请使用脱敏样例，不提交密钥、账号信息、私有业务源码或未授权截图。改动需保持主文件简短，来源细节放 references；不要无目的扩大组件库数量。
+
+0.6.0 已完成技能格式、引用检查与三种请求的独立只读推演，并修正范围和分级冲突；尚未用真实页面验证本版优化效果，历史评测不代表新版端到端验收。
