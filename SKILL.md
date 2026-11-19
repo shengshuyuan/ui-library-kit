@@ -4,7 +4,7 @@ description: 为前端页面提供保留现有效果的轻量优化、局部升�
 license: MIT
 metadata:
   author: shengshuyuan
-  version: "0.7.0"
+  version: "0.8.0"
 ---
 
 # UI Library Kit
@@ -21,7 +21,7 @@ metadata:
 
 ```
 - [ ] 1 诊断：读项目约束与页面，找最影响体验的 2–3 个问题
-- [ ] 2 风格判断与分级：识别页面类型 → 定基调 → 选 A/B/C 方案等级
+- [ ] 2 选择幅度与设计方向：识别页面类型 → 选择轻量/局部/整体 → 独立判断 A/B/C 实现成本
 - [ ] 3 复用：先查已有实现；需要外部组件时定位 1–2 个来源并核实文档与许可
 - [ ] 4 接入：说明方案后用最小依赖接入，复用现有主题与真实状态
 - [ ] 5 验证：构建 + 实际渲染 + 交互/无障碍；如实报告未验证项
@@ -50,7 +50,7 @@ metadata:
 
 整体改版可在原技术栈内执行，不等同于换框架。先用一个代表区块统一视觉方向，再扩展到目标页面。跨页面共享 token 的修改先核对影响范围，不把单页授权扩大成全站重做。
 
-读取 [design-methods.md](references/design-methods.md)，将“问题 → 设计方法 → 复用组件 → 可观察的改善”连起来；参考效果只提取布局、字阶、材质或交互规律，不整页照搬。
+先按页面任务读取 [composition-recipes.md](references/composition-recipes.md) 的一个配方，明确组件之间的内容、交互和数据关系；不是把不同来源的组件堆在同一页。再按需读取 [design-methods.md](references/design-methods.md)，将“问题 → 设计方法 → 复用组件 → 可观察的改善”连起来；参考效果只提取布局、字阶、材质或交互规律，不整页照搬。
 
 ### 风格与实现成本
 
@@ -77,8 +77,8 @@ metadata:
 | B 框架内升级 | 沿用现有库，引入 1–2 个免费组件补缺口 | 现有能力不能经济地满足已选目标 |
 | C 换方向建议 | 现有框架撑不住，给方向和迁移路径，不自动迁移 | 有证据表明现有框架的维护、兼容性或补丁成本不能支持目标；无 token、多库混用或想改版本身不足以触发 |
 
-- 一句话模式下：A 直接做；B 在新增运行时依赖 ≤1 个、免费、兼容时直接做，否则说明后等确认；C 先把已选范围内现有框架可支持的改动做完（让用户立刻看到变化），再给迁移建议，迁移方向由用户决定，技能不执行迁移。
-- 幅度选择按前文询问；以下实施边界需要明确答复：页面用途无法判断且两种判断改法相反；B 超出依赖阈值；C 级的迁移方向（A 级改动不用等）；改动触及项目规则标注"不要动"的区域。
+- 一句话模式下：A 直接做；B 的依赖是实现已选目标所必需、许可明确、兼容且不更换现有基础系统时，说明实际新增/升级内容后直接做；不以包数量作为唯一审批条件；C 先把已选范围内现有框架可支持的改动做完（让用户立刻看到变化），再给迁移建议，迁移方向由用户决定，技能不执行迁移。
+- 幅度选择按前文询问；以下实施边界需要明确答复：页面用途无法判断且两种判断改法相反；B 会造成框架/基础库主版本迁移、覆盖现有配置或扩大已选范围；C 级的迁移方向（A 级改动不用等）；改动触及项目规则标注"不要动"的区域。
 - 项目没有组件库（手写 CSS、只用 Tailwind 或图标库）时，优先 A；整体改版也能用原生布局与 CSS 完成；只有现有能力存在明确缺口（如复杂控件，或用户明确指定的来源效果需要兼容依赖）才进入 B，并只引入该条目。"没有组件库"本身不是 C 级信号。
 
 不要把"美化"默认理解为增加动画、渐变或整套 UI 库。不为了使用本技能新建项目或迁移框架；整体改版可调整目标范围内的 token，不扩大为无关页面重写；C 级也只建议，不执行迁移。
@@ -102,14 +102,14 @@ metadata:
 | 后台、数据表、仪表盘、Agent 界面 | [BoardUI](references/boardui.md) | React | Tailwind | 免费仓库 MIT（核对），Pro 分开 |
 | 标签、反馈、上传、局部微交互 | [Bencho](references/bencho.md) | React | 免费 registry / 按条目依赖 | 官方免费仓库 MIT；Pro 单独排除 |
 | 状态形变、骨架交接、触感与粒子效果 | [Dissolve](references/dissolve.md) | Web DOM/Canvas 源码；另有 RN 包 | 网页适配 web/cp，不装原生包 | 官方仓库 MIT；Web 移植需验证 |
-| 表单、按钮、弹窗等基础组件系统 | [HeroUI](references/heroui.md) | React（另有 RN） | 区分 v2/v3 | 开源免费，Pro 模板不在范围 |
+| 表单、按钮、弹窗等基础组件系统 | [HeroUI](references/heroui.md) | React（另有 RN） | 区分 v2/v3 | v3 Apache-2.0；版本与 Pro 分开 |
 | AI 等待、光效、语音、流体效果 | [Libraries.dev](references/libraries.md) | React 18+ | npm 包 | 免费包与 Pro Studio 分开 |
 | 页面区块、仪表盘、模板探索 | [Watermelon UI](references/watermelon.md) | React | 逐条核实依赖 | 逐条核实条目许可 |
 | 文本动画、创意背景、局部特效 | [React Bits](references/react-bits.md) | React | shadcn registry 或复制 | MIT + Commons Clause，Pro 分开 |
 | 已有 shadcn 的交互动画 | [Animate UI](references/animate-ui.md) | React / Vue 分开核实 | components.json、motion | MIT + Commons Clause |
 | 甘特图、颜色选择、上传等业务组件 | [Kibo UI](references/kibo-ui.md) | React | 已初始化 shadcn + CSS Variables | 开源免费（核对） |
 | 产品展示、Bento、数字/文本动效 | [Magic UI](references/magic-ui.md) | React | shadcn CLI | MIT，Pro 分开 |
-| Hero、视差卡片、滚动与营销区块 | [Aceternity UI](references/aceternity-ui.md) | React | shadcn CLI、Tailwind、Motion | 免费与 All-Access 分开 |
+| Hero、视差卡片、滚动与营销区块 | [Aceternity UI](references/aceternity-ui.md) | React | shadcn CLI、Tailwind、Motion | 免费/付费分开；具体源码授权须核实 |
 
 **把组件能力用在页面上**
 
@@ -146,6 +146,7 @@ metadata:
 - 业务反馈连接真实 loading/error/disabled/empty 状态，不用装饰动效代替可用性。
 - 浏览器效果先确认是 React DOM、原生 DOM/Canvas 还是 React Native；官方网页展示和原生 JSX 不能互换 API。客户端副作用放在挂载生命周期，卸载清理动画、监听、Canvas 和计时器。
 - 处理 SSR/client 边界、键盘焦点、触屏、reduced-motion；关键操作不能只靠 hover 触发。
+- 异步防重复操作要实际阻止重复请求，同时检查禁用是否导致焦点丢失。可按现有模式选择原生 disabled 或 aria-disabled 配合事件保护；两者不能只改外观。
 
 **边界**
 - 非 React 项目：先核实该来源是否有官方兼容实现（如 Vue、Native）；没有就说明限制，用项目原生实现或仅提供视觉参考，不自动引入 React。
@@ -154,11 +155,16 @@ metadata:
 
 ### 5. 验证
 
+先定义本轮可观察的验收：优化前最影响任务的问题是什么；优化后哪个位置、操作或状态证明它改善。对照使用相同内容、视口和业务状态，不能靠更换文案/数据让后图看起来更好。
+
+完成界面改动后必须执行至少一个真实关键操作：例如保存→失败→重试→刷新读取，或收藏→反向操作→刷新。占位示例和假成功不能证明业务可用。演示夹具要标明模拟服务/故障注入，不能冒充生产集成。
+
+
 ```
 - [ ] 构建 / 类型检查 / lint / 已有测试含端到端（与改动规模相称）
-- [ ] 桌面与窄屏实际渲染
+- [ ] 桌面与窄屏实际渲染；读取实际 CSS 视口和 scroll/clientWidth，不把请求的截图尺寸当视口证明
 - [ ] 关键交互、键盘焦点、触屏
-- [ ] reduced-motion 下的降级表现
+- [ ] reduced-motion 下的降级表现；区分真实媒体偏好模拟、静态备选与只查源码
 - [ ] 深浅色主题（项目有的话）
 - [ ] 有截图能力时：相同视口、内容、状态下对比前后
 ```
@@ -212,6 +218,7 @@ metadata:
 
 按需读取，一次任务通常只需 2–3 个：
 
+- 页面组合配方：[composition-recipes.md](references/composition-recipes.md) — 选定页面任务后读一个配方
 - 设计方法与细节验收：[design-methods.md](references/design-methods.md) — 确定视觉方向和检查交互细节时读
 - 风格判断与方案分级细则：[style-and-tiers.md](references/style-and-tiers.md) — 第 2 步读
 - 表达示例：[examples.md](references/examples.md) — 写报告前读

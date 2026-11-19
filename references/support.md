@@ -1,34 +1,37 @@
 # 支持程度与维护
 
-状态记录日期：2026-11-05；2026-11-07 复检 10 个来源的主要入口 URL 均返回 HTTP 200（仅确认可达，未逐页重读内容）。2026-11-19 新增 Dissolve 深读并更新 Bencho 免费源码证据，其余来源保留原核实范围。入口核实不是端到端安装证明；下列状态针对本技能的证据，不是对上游质量评分。
+状态日期：2026-11-19。区分目录/文档、源码、安装构建、浏览器与业务验收。下表的“本轮实测”仅指隔离验收夹具，不是对全部组件或生产服务的保证。11个来源均已有代表组件、组合方法和接线验收说明；不要求每次任务遍历所有网站。
 
-| 来源 | 本技能验证程度 | 接入条件 |
+| 来源 | 本轮吸收与核实 | 实际验证与边界 |
 | --- | --- | --- |
-| BoardUI | 官方 skill/CLI/MCP 文档已核实；尚无组件接入实测 | 核实框架及样式版本，免费与 Pro 分开 |
-| Bencho | 官方 MIT 免费仓库、registry 与代表条目源码/依赖已核实；本技能未实测安装 | 按条目区分免费/Pro，按框架适配并验证 |
-| Dissolve | 官方 MIT、29 项组件索引、Web 代表源码和 RN 包边界已核实；未实测移植 | 网页适配 web/cp；不将 RN 包当 React DOM 依赖 |
-| HeroUI | 官方索引、组件和 MCP 文档已核实；尚无组件接入实测 | 核对主版本，不混用 v2/v3 API |
-| Libraries.dev | border-beam@1.4.1 在临时 React 示例完成构建与浏览器交互验证 | 此证据不覆盖所有效果或所有框架 |
-| Watermelon UI | 官方目录与 MCP 文档已核实；尚无组件接入实测 | 逐条核实来源、依赖和许可 |
-| React Bits | CountUp-TS-CSS 完成 CLI 安装、类型检查、构建与浏览器渲染 | JS/TS 与 CSS/TW 版本分开，注意 Commons Clause 与 Pro |
-| Animate UI | 当前 React 安装文档与 Vue 更新记录已核实；转换未实测 | 区分 v1/v2、React/Vue；先单项 dry-run；MIT + Commons Clause 单独核实 |
-| Kibo UI | 官方 setup 与组件目录已核实；组件未实测 | 已有 shadcn 与 CSS Variables 主题优先 |
-| Magic UI | Number Ticker 完成 CLI 安装、类型检查、构建、状态更新与浏览器验证 | 免费与 Pro 分开，不混用同名 Border Beam API |
-| Aceternity UI | Bento Grid 完成 CLI 安装、类型检查、构建与响应式/主题验证 | 免费与 All-Access 分开，避免误跑新项目初始化 |
+| BoardUI | Agent Chat/Thinking/Log、Data Table/Grid、Notification Center与KPI组合；已读Agent Thinking源码与MIT | 本轮未安装；按条目免费/Pro和基础主题依赖核实 |
+| Bencho | 48项免费目录、代表API、Like/Upload/OTP/Compare源码与registry；MIT免费/Pro分开 | 本轮Like受控适配、构建、连点/键盘、持久化及reduce浏览器检查通过；不覆盖所有条目 |
+| Dissolve | 29项组件到Web模块映射，骨架/按钮/输入/核心源码、MIT与RN边界 | 本轮仅使用按钮触感/状态连续性的方法；没有移植或安装粒子引擎，不能报告官方Web组件接入通过 |
+| HeroUI | v3 Table/TextField/Form实际源码，日期/选择/浮层组合；v3 Apache-2.0 | 本轮未安装；v2/v3及React/RN分开，当前版本约束按元数据核实 |
+| Libraries.dev | Beam、Orbs、Voice Glow/Ring、Metal、Image等状态包覆方法和API | 历史border-beam@1.4.1示例构建/浏览器通过；本轮未重跑全部包，后续目录许可与WebGL降级逐项核实 |
+| Watermelon UI | Catalog与5项区块路径，auth-01 registry内嵌源码、repo MIT；认证接线与标签缺口 | 本轮未安装；官方源码文件与外部素材分别核许可，不把界面当认证服务 |
+| React Bits | 标题/内容/背景组合；CountUp源码/registry、Motion依赖、初始reduce分支；MIT+Commons Clause | 历史CountUp示例安装/构建/渲染通过；本轮源码复核，未覆盖其他条目 |
+| Animate UI | Accordion/Dialog/Navigation Menu方法与当前v2文档；v1 Accordion源码作实现样例 | 本轮未运行转换；v1源码不能代表v2发布实现，CLI先单项dry-run；MIT+Commons Clause |
+| Kibo UI | Gantt/Dropzone/Color Picker/Code Block组合，Dropzone源码/包依赖与MIT全文 | 本轮未安装；已有shadcn/CSS变量优先，Dropzone只是文件输入，不是上传后端 |
+| Magic UI | Bento、TextAnimate、AnimatedList等方法，NumberTicker/Bento源码与MIT | 本轮Bento源码适配构建、桌面/320px渲染与显式CTA路由检查；其他组件不外推 |
+| Aceternity UI | Bento/Hero Parallax/Moving Border实际registry源码，营销页组合、尺寸和运动风险 | 历史Bento示例验收记录保留；本轮逐项源码授权仍需确认，不自动复制许可未闭合项；可用构图方法或MIT替代 |
 
-Codex、Claude Code 已在本机新进程验证发现/调用；Cursor 会话中已验证可从 `~/.claude/skills` 发现并附加该技能。公开 GitHub 仓库已通过 Skills CLI 在临时项目安装到 Codex 与 Claude Code 目录，并逐文件比对。其他客户端、Windows/Linux 尚未验证。公开文档不能把这些写成全面兼容。
+Vibe Design Tips 是设计方法参考，已读加载、连续性、中英文排版三篇正文；其他文章作为按需阅读入口，不计作“全部文章已吸收”。
 
-当前只使用上述来源的免费且许可明确内容；Pro/All-Access 内容不在接入范围。纯付费 beUI Pro 已从当前来源移除，历史报告保留原验证范围。
+## 证据和客户端范围
 
-## 更新规则
+0.8.0新增页面组合配方、代表源码路径与临时React验收。独立文档推演与真实UI检查分开记录，详见 [results-0.8.0.md](../evals/results-0.8.0.md)。格式和构建通过不能替代视觉/交互结论。
 
-- 每次用到某来源时按实际项目版本核实相关页面，不每次抓取各来源整站。
-- 入口变化时只更新对应参考并记录日期；真实接入后再提升支持状态，保留版本和验证范围。
-- 同一入口失败后可尝试其官方仓库或版本文档；仍无证据则说明缺口，使用本地已有方案，不猜 API。
-- 发布前检查相关链接、包结构、安装和行为案例。过期参考只提供检索线索，不能当作当前行为证明。
+历史记录：Codex、Claude Code本机新进程发现/调用，Cursor会话附加及公开GitHub的Skills CLI安装曾通过。其他客户端、Windows/Linux未验证；本轮没有重跑全部客户端安装。
 
-## 本轮未纳入默认来源的候选
+## 维护规则
 
-AI Elements 官网检索结果在 2026-11-05 显示迁往 shadcn/ui，并计划于 2026 年 11 月底弃用旧项目。新项目先核实迁移后的官方组件入口，不把旧 ai-elements 全量安装命令加入默认流程。证据入口：https://elements.ai-sdk.dev/ （使用前重查公告）。
+- 接入时按项目实际版本读取具体组件源码、registry依赖闭包、样式与许可，不只检查入口HTTP200。
+- 报告写明直接复用、源码适配或方法参考；先确认真实数据状态，再确认动画。
+- 新实现实测后才提升支持状态，并保留版本、环境与具体组件范围。付费与素材授权不随免费仓库声明外推。
+- 一个入口失败可查官方源码或版本文档；仍无证据则标明缺口、使用已有方案，不猜API。
+- 发布前检查引用、技能结构、行为案例和实际页面；不把独立推演当实际运行，也不把一张截图当全面验收。
 
-Prompt Kit 文档本轮读取返回 403，尚无足够的当前安装证据，因此未加入默认来源。这是访问缺口，不代表项目不可用。
+## 暂不加入默认来源的候选
+
+AI Elements、Prompt Kit 保留历史候选记录；本轮未重新研究，不用过期迁移公告或访问失败推断当前状态。若未来任务需要，先读取当时官方入口再决定。

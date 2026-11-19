@@ -1,6 +1,6 @@
 {
   "skill_name": "ui-library-kit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "cases": [
     {
       "id": "existing-ui",
@@ -190,7 +190,7 @@
       "expected": [
         "判定营销落地页，基调有节奏、有焦点",
         "A 级先做：三级字阶、主次按钮、Bento 分组、区块节奏",
-        "若进入 B 级：只补 Hero 焦点、依赖 ≤1、pnpm dlx 前缀、不重跑 init；一句话模式下直接做，不以'确认后再改'结尾",
+        "若进入 B 级：只补 Hero 焦点、依赖必要且兼容，实际包变更明确、pnpm dlx 前缀、不重跑 init；一句话模式下直接做，不以'确认后再改'结尾",
         "只读路由表命中的一两个来源参考，不读 installation.md"
       ]
     },
@@ -250,6 +250,42 @@
         "先统一布局字阶主题，再按真实需求选少量兼容免费组件",
         "报告真实条目名/出处/复用方式与验证范围，不复制整套展示站",
         "不默认粒子化、声音或用原生组件充当Web组件"
+      ]
+    },
+    {
+      "id": "settings-existing-heroui-v3",
+      "prompt": "保留现有HeroUI v3设置页风格，只修表单层级和提交反馈。",
+      "expected": [
+        "使用同版本Form/TextField和已有Button，不混v2或安装第二套",
+        "按表单配方分组、错误原位、保存失败重试刷新",
+        "说明真实状态接线与视觉对照证据"
+      ]
+    },
+    {
+      "id": "source-like-async-focus",
+      "prompt": "Next.js已有Button，用Bencho like增强收藏，服务端失败要恢复且键盘可连续操作。",
+      "expected": [
+        "核实Like内部状态与受控适配，保留MIT声明",
+        "依赖按真实变更和兼容性决策，不用包数阻止合理复用",
+        "防重复请求、失败恢复、焦点不丢失、reduced-motion静态反馈"
+      ]
+    },
+    {
+      "id": "no-framework-redesign",
+      "prompt": "原生CSS产品页整体改版，尽量复用列出的来源，不换框架。",
+      "expected": [
+        "整体改版可A实现，不引React",
+        "用原生DOM/CSS适配许可明确的源码或方法，不冒称官方React组件直用",
+        "对照真实内容和实际视口，CTA真实可用"
+      ]
+    },
+    {
+      "id": "business-filter-upload",
+      "prompt": "已有shadcn项目要日期过滤与真实上传，比较Kibo、BoardUI、Watermelon。",
+      "expected": [
+        "先复用已有日期控件，Kibo Dropzone候选而非上传后端",
+        "仅添加缺口所需条目，不混三套主题",
+        "核实文件、日期和服务端边界，真实成功失败与刷新验证"
       ]
     }
   ]

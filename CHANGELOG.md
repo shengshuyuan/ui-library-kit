@@ -1,5 +1,14 @@
 # Changes
 
+## 0.8.0 — 2026-11-19
+
+- 补齐其余9站的代表组件、页面组合、源码/registry与接线验收方法；按来源区分文档、源码和运行证据。
+- 新增设置/表单、数据后台、落地页、AI工具四类组合配方。
+- 修正HeroUI v3 Apache-2.0与compound API记录；区分Animate UI v1源码和当前v2、Watermelon展示与认证、Kibo文件输入与上传后端。
+- 依赖从硬包数阈值改为必要性、兼容和范围判断；加入真实操作、焦点防重与实际CSS视口验收。
+- 独立推演4类请求，并在隔离React夹具完成设置、Bencho Like、Magic Bento的构建/桌面/320px/关键交互及reduce验收；修复Like异步禁用失焦。
+- 验收范围和限制见evals/results-0.8.0.md；不声称全站组件或生产服务全面通过。
+
 ## 0.7.0 — 2026-11-19
 
 - 新增 Dissolve 来源，建立 29 项组件及 Web 模块到页面问题的映射，区分 Web 源码适配和 React Native 包接入。

@@ -11,7 +11,7 @@
 - 详情页 https://bencho.dev/blocks/upload-dropzone 明确free with full source；https://bencho.dev/blocks/jelly-tabs 、https://bencho.dev/blocks/form-error 明确included with Bencho Pro。
 - 官网MCP页面称可把真实组件贴入项目；仓库README明确MCP属于Pro，不需要为免费组件安装MCP或购买Pro。
 
-## 接入方式（官方文档已核实，未执行安装）
+## 接入方式（官方文档已核实，未运行 registry CLI）
 
 - README给shadcn registry https://bencho.dev/r/registry.json ，单项命令：`npx shadcn@latest add https://bencho.dev/r/like.json`。upload-dropzone、one-time-code、toast-stack、context-meter、image-compare各README均给同名/r/<slug>.json命令。
 - 手动复制blocks/<slug>的TSX与CSS，读取该条目README所列依赖，映射tokens到现有主题。不要安装整个仓库的所有依赖。
@@ -47,11 +47,11 @@
 - 原生CSS/Vue不引入React；参考交互原理，或优先项目原有兼容组件。
 - 拖拽、hover、长动画、声音都需键盘/触屏/reduced-motion/静音降级。音效需用户手势且默认不主动打开；网页示例成功/进度必须连接真实业务。
 
-本次是文档、许可、目录及3个代表源码阅读验证；没有安装组件，也没有浏览器视觉验收，不应写成生产可直接即插即用。
+来源研究覆盖文档、许可、目录与代表源码；0.8.0新增Like源码适配的实际构建和浏览器验收，见末节。未运行registry CLI，也不声称其他组件或生产业务即插即用。
 
 ## Registry endpoint 后续核实
 
-已成功读取 upload-dropzone.json 与 like.json 原始JSON。二者type=registry:component，dependencies为framer-motion@^13.1.1和lucide-react@^1.31.0，registryDependencies为https://bencho.dev/r/bencho-tokens.json。Upload含16328字符TSX与7375字符CSS，Like含6413字符TSX与4855字符CSS：确认真实源码可取，不只是文档声称。仍未执行CLI安装。直接复用registry时注意其精确依赖可能升级现有包，先对照锁文件与项目兼容性。
+已成功读取 upload-dropzone.json 与 like.json 原始JSON。二者type=registry:component，dependencies为framer-motion@^13.1.1和lucide-react@^1.31.0，registryDependencies为https://bencho.dev/r/bencho-tokens.json。Upload含16328字符TSX与7375字符CSS，Like含6413字符TSX与4855字符CSS：确认真实源码可取，不只是文档声称。仍未执行CLI安装；Like手动源码适配已实测，见末节。直接复用registry时注意其精确依赖可能升级现有包，先对照锁文件与项目兼容性。
 
 ## 固定证据入口
 
@@ -72,3 +72,9 @@
 不把官方 MCP、额外 Skill 或 Pro 购买作为免费组件使用前置。免费库里的声音也不是默认启用项。
 
 真实上传需要现有接口或用户明确授权的后端工作；没有接口时说明缺口，不把视觉技能扩大成部署存储服务。
+
+## Like 的真实接线与本轮验证
+
+已读取 `like.json` 的完整 TSX/CSS。导出 `Like` 的演示 API 是 `start`、`effect`、`burst`、`color`、`corner`，内部用 useState 切换 liked，原版没有服务端提交、受控状态或失败回滚。应用内使用时需显式增加受控 selected/onToggle/pending 入口，或把视觉层适配到现有受控Button；不能让内部计数与服务端状态各存一份。
+
+0.8.0 临时React验收项目实际适配并构建了此源码：保留形变/计数效果，映射主题，加入受控状态与异步防重；状态只在本地验收API成功后变更，失败保持原值，刷新重新读取。最初原生 disabled 导致焦点丢失，修正为 aria-disabled/aria-busy 配合事件保护后，连点与键盘Enter回归通过。真实媒体偏好reduce时粒子层隐藏、数位无位移，仍可切换收藏。验证只覆盖此Like适配，不覆盖48项免费组件或生产认证服务。

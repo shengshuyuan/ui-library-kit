@@ -1,4 +1,4 @@
 interface:
   display_name: "UI Library Kit"
-  short_description: "支持轻量优化、局部升级与整体改版，复用现有组件和设计方法并验证页面效果"
+  short_description: "支持轻量优化、局部升级与整体改版，用页面组合配方复用组件与设计方法，按真实操作验收效果"
   default_prompt: "用 $ui-library-kit 优化当前页面，按我选择的轻量优化、局部升级或整体改版诊断并实施，优先复用现有组件、免费区块和设计方法；未指定幅度时给出选项。"

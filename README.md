@@ -6,7 +6,7 @@
 
 这是独立的 Agent Skill，不是组件合集，也不是这些来源的官方产品。无需预先配置 MCP；不捆绑第三方组件源码，不保证这些来源所有组件都能直接安装。
 
-当前版本：**0.7.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
+当前版本：**0.8.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
 
 最简单的用法是一句话：
 
@@ -80,7 +80,7 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 | 来源 | 适用方向 | 当前状态 |
 | --- | --- | --- |
 | [BoardUI](https://www.boardui.com/) | 后台、图表、Agent 界面 | 官方入口已核实，组件接入未实测 |
-| [Bencho](https://bencho.dev/) | 标签、按钮反馈、上传和微交互 | 官方 MIT 免费仓库与 registry 已核实；Pro 排除，接入未实测 |
+| [Bencho](https://bencho.dev/) | 标签、按钮反馈、上传和微交互 | 官方MIT免费仓库与registry已核实；Like源码适配已构建并做浏览器验收，Pro排除 |
 | [Dissolve](https://dissolve.rselmi.com/) | 29 项状态/手势/触感组件与粒子效果 | 官方 MIT、组件索引与代表 Web 源码已核实；移植未实测 |
 | [HeroUI](https://heroui.com/) | 表单等基础组件 | 官方入口已核实，组件接入未实测 |
 | [Libraries.dev](https://libraries.dev/) | AI 状态和视觉效果 | 仅 border-beam@1.4.1 完成示例接入验证 |
@@ -112,3 +112,11 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 0.7.0 深化 [Bencho](references/bencho.md) 的免费组件接入与 [Dissolve](references/dissolve.md) 的组件/源码映射。选择时说明真实页面问题、复用路径、状态接线与验收范围，不把上游演示效果等同于已完成项目接入。
 
 本版研究范围、独立推演与限制见 [0.7.0 验证记录](evals/results-0.7.0.md)。
+
+## 0.8.0：从来源导航到页面配方
+
+11个来源均补齐代表组件、设计/组合方法、源码或registry入口、真实业务接线与验收边界。新增 [页面组合配方](references/composition-recipes.md)，覆盖设置/表单、数据后台、落地页、AI工具。已有明确的轻量、局部或整体选择时直接沿用；必要且兼容的依赖不按包数量一刀切。
+
+本轮在隔离React夹具实际完成三类页面：设置精修、Bencho Like局部升级、Magic UI Bento整体改版。类型检查与构建、桌面前后对照、320px无溢出、保存失败重试/刷新、连点与键盘焦点、真实reduced-motion检查已完成，并修正异步禁用导致的失焦。详见 [0.8.0验收记录](evals/results-0.8.0.md) 与 [来源支持矩阵](references/support.md)。
+
+这是代表性夹具验收，不是11站所有组件、生产认证/上传、Next.js SSR、跨浏览器或真机的全面保证。Aceternity具体源码授权未明确时不自动复制；Animate UI v1源码样例不冒充当前v2。技能不打包第三方组件源码。
