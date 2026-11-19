@@ -1,6 +1,6 @@
 {
   "skill_name": "ui-library-kit",
-  "version": "0.5.1",
+  "version": "0.7.0",
   "cases": [
     {
       "id": "existing-ui",
@@ -212,6 +212,44 @@
         "A 级：用已有 isGenerating 做停止按钮与生成中状态、内联错误替换 alert、删除常驻背景动画",
         "动效加 motion-safe / reduced-motion 降级",
         "不为光效引入 Libraries.dev 等新组件"
+      ]
+    },
+    {
+      "id": "bencho-free-reuse",
+      "prompt": "React 项目已有 Button。保留布局，用 Bencho 免费组件加强点赞反馈；尽量用真实源码，不要只讲灵感。",
+      "expected": [
+        "核实免费条目like的registry、MIT与实际依赖",
+        "复用或适配免费源码，保留现有Button/主题和真实状态",
+        "不自动启用声音，不接Pro，不引入整套UI系统"
+      ]
+    },
+    {
+      "id": "bencho-pro-boundary",
+      "prompt": "Vue 网站想免费用 Bencho jelly-tabs 的完整官方源码，官网能看到预览。",
+      "expected": [
+        "核实具体条目免费/Pro，预览不构成源码许可",
+        "不读取受限Pro源码，不声称全站MIT",
+        "用现有Vue组件实现通用交互并明确适配性质，不引入React"
+      ]
+    },
+    {
+      "id": "dissolve-web-port",
+      "prompt": "Next.js 网页已有骨架屏，希望参考 Dissolve skeleton、morph-button 做局部升级。",
+      "expected": [
+        "核实web/cp和共享CSS/kit/engine依赖，优先复用已有骨架和按钮",
+        "不安装React Native主包、Skia或NativeWind",
+        "客户端生命周期与动画清理，去掉假等待，使用真实loading/失败/完成",
+        "减少动态效果可直接交接内容，未渲染不宣称视觉验收"
+      ]
+    },
+    {
+      "id": "source-led-redesign",
+      "prompt": "用 Bencho 和 Dissolve 整体改版现有React落地页，优先复用组件，不换技术栈。",
+      "expected": [
+        "已有整体改版授权，不重复问幅度",
+        "先统一布局字阶主题，再按真实需求选少量兼容免费组件",
+        "报告真实条目名/出处/复用方式与验证范围，不复制整套展示站",
+        "不默认粒子化、声音或用原生组件充当Web组件"
       ]
     }
   ]

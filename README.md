@@ -1,12 +1,12 @@
 # UI Library Kit
 
-> An Agent Skill that diagnoses visual/interaction issues on an existing frontend page first, then picks, integrates and verifies free, clearly-licensed components from 10 curated UI sources — with a choice of light polish, targeted upgrades or a full visual redesign on your existing stack. Works with Codex, Claude Code and Cursor. Chinese docs below.
+> An Agent Skill that diagnoses visual/interaction issues on an existing frontend page first, then picks, integrates and verifies free, clearly-licensed components from 11 curated UI sources — with a choice of light polish, targeted upgrades or a full visual redesign on your existing stack. Works with Codex, Claude Code and Cursor. Chinese docs below.
 
-为现有前端页面诊断视觉和交互问题，再从 10 个 UI 来源中选择、接入与验证合适组件。支持保留现有效果精修、局部升级和整体视觉改版，沿用现有技术栈。
+为现有前端页面诊断视觉和交互问题，再从 11 个 UI 来源中选择、接入与验证合适组件。支持保留现有效果精修、局部升级和整体视觉改版，沿用现有技术栈。
 
 这是独立的 Agent Skill，不是组件合集，也不是这些来源的官方产品。无需预先配置 MCP；不捆绑第三方组件源码，不保证这些来源所有组件都能直接安装。
 
-当前版本：**0.6.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
+当前版本：**0.7.0**。新增来源按需读取，保持现有项目优先，不会每次遍历所有网站。
 
 最简单的用法是一句话：
 
@@ -73,14 +73,15 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 
 适用于现有项目的视觉优化、整体页面改版和组件接入。后端实现与框架迁移不是本技能的核心职责。非 React 项目先核实兼容实现，不自动引入 React。
 
-仅使用各站免费且许可明确的内容，不接入付费模板或 Pro 授权。Bencho 在源码和许可未确认前仅作灵感参考。
+仅使用各站免费且许可明确的内容，不接入付费模板或 Pro 授权。Bencho 官方免费仓库为 MIT，Pro 条目不纳入；Dissolve 的网页实现按官方 Web 源码适配，不在网页项目安装 React Native 主包。
 
 ## 来源与证据范围
 
 | 来源 | 适用方向 | 当前状态 |
 | --- | --- | --- |
 | [BoardUI](https://www.boardui.com/) | 后台、图表、Agent 界面 | 官方入口已核实，组件接入未实测 |
-| [Bencho](https://bencho.dev/) | 微交互灵感 | 源码/许可未确认前仅作参考 |
+| [Bencho](https://bencho.dev/) | 标签、按钮反馈、上传和微交互 | 官方 MIT 免费仓库与 registry 已核实；Pro 排除，接入未实测 |
+| [Dissolve](https://dissolve.rselmi.com/) | 29 项状态/手势/触感组件与粒子效果 | 官方 MIT、组件索引与代表 Web 源码已核实；移植未实测 |
 | [HeroUI](https://heroui.com/) | 表单等基础组件 | 官方入口已核实，组件接入未实测 |
 | [Libraries.dev](https://libraries.dev/) | AI 状态和视觉效果 | 仅 border-beam@1.4.1 完成示例接入验证 |
 | [Watermelon UI](https://ui.watermelon.sh/) | 区块、仪表盘、模板 | 官方入口已核实，组件接入未实测 |
@@ -107,3 +108,7 @@ npx skills add shengshuyuan/ui-library-kit --skill ui-library-kit
 反馈时提供客户端、技能版本、框架/组件库版本、复现提示词与预期行为。请使用脱敏样例，不提交密钥、账号信息、私有业务源码或未授权截图。改动需保持主文件简短，来源细节放 references；不要无目的扩大组件库数量。
 
 0.6.0 已完成技能格式、引用检查与三种请求的独立只读推演，并修正范围和分级冲突；尚未用真实页面验证本版优化效果，历史评测不代表新版端到端验收。
+
+0.7.0 深化 [Bencho](references/bencho.md) 的免费组件接入与 [Dissolve](references/dissolve.md) 的组件/源码映射。选择时说明真实页面问题、复用路径、状态接线与验收范围，不把上游演示效果等同于已完成项目接入。
+
+本版研究范围、独立推演与限制见 [0.7.0 验证记录](evals/results-0.7.0.md)。
